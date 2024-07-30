@@ -12,10 +12,12 @@ import { BsPatchPlusFill } from "react-icons/bs";
 import { FaClipboardList } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
 import {Home} from './pages/Owner/dashboard/Home';
-import {Profile} from './pages/User/UserProfile';
+// import {Profile} from './pages/User/UserProfile';
+import IrregularMembers from './pages/Owner/dashboard/IrregularMembers'
 import {MembersList} from './pages/Owner/dashboard/MembersList'
 import {FollowupEnquiries} from './pages/Owner/dashboard/FollowupEnquiries'
 import GymEquipments from './pages/Owner/dashboard/GymEquipments';
+import SetQRCode from './pages/Owner/dashboard/SetQRCode'
 // import {Tables} from './pages/Owner/dashboard/tables';
 // import {Notifications} from './pages/Owner/dashboard/notifications';
 import {AddMember} from './pages/Owner/dashboard/AddMember'
@@ -29,6 +31,8 @@ import {Plans} from './pages/Owner/dashboard/Plans'
 import CreatePlans from './pages/Owner/dashboard/CreatePlans';
 import EditPlan from './pages/User/EditPlan';
 import ConfirmPayments from './pages/Owner/dashboard/ConfirmPayments';
+import PendingPayments from './pages/Owner/dashboard/PendingPayments';
+import UpcomingRenewals from './pages/Owner/dashboard/UpcomingRenewals'
 import {PaymentDetail} from './pages/Owner/dashboard/PaymentDetail';
 import {AllDietPlans} from './pages/Owner/dashboard/AllDietPlans';
 import {CreateDietPlans} from './pages/Owner/dashboard/CreateDietPlans'
@@ -91,11 +95,17 @@ export const routes = [
         path: '/MembersList',
         element: <MembersList/>,
       },
+      // {
+      //   icon: <HiUserCircle {...icon} />,
+      //   name: 'Member Profile',
+      //   path: '/profile',
+      //   element: <Profile />,
+      // },
       {
         icon: <HiUserCircle {...icon} />,
-        name: 'Member Profile',
-        path: '/profile',
-        element: <Profile />,
+        name: 'Irregular Members',
+        path: '/IrregularMembers',
+        element: <IrregularMembers />,
       },
       {
         icon: <FaUserTie {...icon} />,
@@ -140,6 +150,18 @@ export const routes = [
         element: <ConfirmPayments/>,
       },
       {
+        icon: <BsPatchPlusFill {...icon} />,
+        name: 'Pending Payments',
+        path: '/PendingPayments',
+        element: <PendingPayments/>,
+      },
+      {
+        icon: <BsPatchPlusFill {...icon} />,
+        name: 'Upcoming Renewals',
+        path: '/UpcomingRenewals',
+        element: <UpcomingRenewals/>,
+      },
+      {
         icon: <BiSolidOffer {...icon} />,
         name: 'Payment Detail',
         path: '/PaymentDetail',
@@ -174,6 +196,12 @@ export const routes = [
         name: 'Salary Management',
         path: '/SalaryManagement',
         element: <SalaryManagement />,
+      },
+      {
+        icon: <FaDumbbell {...icon} />,
+        name: 'Set QR Code',
+        path: '/SetQRCode',
+        element: <SetQRCode />,
       },
      
       
