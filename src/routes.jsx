@@ -37,7 +37,7 @@ import {PaymentDetail} from './pages/Owner/dashboard/PaymentDetail';
 import {AllDietPlans} from './pages/Owner/dashboard/AllDietPlans';
 import {CreateDietPlans} from './pages/Owner/dashboard/CreateDietPlans'
 import TrainersList from './pages/Owner/dashboard/TrainersList';
-import AddTrainers from './pages/Owner/dashboard/AddTrainers';
+import AddTrainer from './pages/Owner/dashboard/AddTrainer';
 import SalaryManagement from './pages/Owner/dashboard/SalaryManagement';
 const icon = {
   className: 'w-5 h-5 text-inherit',
@@ -115,9 +115,9 @@ export const routes = [
       },
       {
         icon: <UserPlusIcon {...icon} />,
-        name: 'Add Trainers',
-        path: '/AddTrainers',
-        element: <AddTrainers />,
+        name: 'Add Trainer',
+        path: '/AddTrainer',
+        element: <AddTrainer />,
       },
       {
         icon: <FaUserTie {...icon} />,

@@ -58,7 +58,7 @@ export const TrainersList = () => {
                <Button variant="filled" className={` ml-6 ${sidenavType==='dark'? "bg-gray-800": " bg-blue-gray-800"}`}>Back</Button>
                </Link>
   <div></div>
-  <Link to='/dashboard/AddMember'>
+  <Link to='/dashboard/AddTrainer'>
   <Button size='sm' className={` py-3 ${sidenavType === 'dark'? "bg-red-700" : "bg-black"}`}>Add A  Trainer</Button>
   </Link>
 </div>    
