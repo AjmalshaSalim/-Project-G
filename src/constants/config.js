@@ -32,12 +32,16 @@ const Delete_Gym_Plans='/api/gym-plans/'
 const View_Trainers='/api/trainers/'
 const Create_Trainer='/api/add-trainer/'
 const List_Users='/api/gym-users/'
+const Set_QR = '/api/set-qr-code/'
+
+
+
+// Enquires
+const List_Upcoming_Enquiries = '/api/enquiries/upcoming-follow-up/'
 const List_Enquiries = '/api/enquiries/followup/'
-
-
-
-
-
+const Enquiry_Update = '/api/enquiries/update/'
+const Enquiry_Delete = '/api/enquiries/delete/'
+const Enquiry_Create = 'api/enquiries-create/'
 
 
 
@@ -77,6 +81,15 @@ export const API_URLS = {
     View_Trainers:`${View_Trainers}`,
     Create_Trainer:`${Create_Trainer}`,
     List_Users:`${List_Users}`,
-    List_Enquiries:`${List_Enquiries}`
+   
+    Set_QR:`${Set_QR}`,
+
+
+    // Enquires
+    List_Enquiries:`${List_Enquiries}`,
+    List_Upcoming_Enquiries:`${List_Upcoming_Enquiries}`,
+    Enquiry_Update : `${Enquiry_Update}`,
+    Enquiry_Delete :`${Enquiry_Delete}`,
+    Enquiry_Create : `${Enquiry_Create}`,
 }
 

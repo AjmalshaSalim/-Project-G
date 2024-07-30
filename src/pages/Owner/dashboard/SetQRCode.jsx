@@ -1,31 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { QrScanner } from "react-qrcode-scanner";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { Tooltip } from "@material-tailwind/react";
 import { MdOutlineQrCodeScanner } from "react-icons/md";
-// import { ADD_QR_Attendance } from "../../actions/AttendanceAction";
-
+import QRCode from "qrcode.react";
+import {Set_QR} from "../../../actions/AttendanceAction"
 const SetQRCode = () => {
   const [qrData, setQrData] = useState('');
   const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [generatedQrData, setGeneratedQrData] = useState('');
+  const [inputData, setInputData] = useState('');
+  const qrRef = useRef();
 
-  const handleScan = async (data) => {
+  const handleScan = (data) => {
     if (data) {
       setQrData(data);
-      // try {
-      //   const response = await ADD_QR_Attendance(data);
-      //   if (response.status === 201) {
-      //     console.log('Attendance recorded successfully', response);
-      //     localStorage.setItem('qrData', data);
-      //     window.location.reload();
-      //   } else {
-      //     console.error('Failed to record attendance', response);
-      //     alert('Failed to record attendance. Please try again.');
-      //   }
-      // } catch (error) {
-      //   console.error('Error occurred while recording attendance', error);
-      //   alert('An error occurred while recording attendance. Please try again.');
-      // }
+      alert(`QR Code Scanned: ${data}`);
     } else {
       console.warn('No data received from QR scan');
       alert('No data received from QR scan. Please try again.');
@@ -43,6 +33,38 @@ const SetQRCode = () => {
   const closeCamera = () => {
     setIsCameraOpen(false);
     setQrData('');
+  };
+
+  const generateQRCode = () => {
+    if (inputData) {
+      setGeneratedQrData(inputData);
+    } else {
+      alert('Please enter data to generate a QR code.');
+    }
+  };
+
+  const downloadQRCode = () => {
+
+    const setQrData = async () => {
+      try {
+        console.log("inputData",inputData)
+        const data = inputData
+        const response = await Set_QR(data);
+        console.log("const [attendance, setAttendance] = useState(null);",response)
+      } catch (error) {
+        console.error('Failed to fetch equipments', error);
+      }
+    };
+
+    setQrData()
+
+
+    const canvas = qrRef.current.querySelector("canvas");
+    const url = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "qr_code.png";
+    link.click();
   };
 
   useEffect(() => {
@@ -63,7 +85,7 @@ const SetQRCode = () => {
 
   return (
     <div className="relative text-center">
-      <div
+      {/* <div
         className=" bg-red-900 hover:bg-opacity-70 h-20 w-30 rounded-lg text-center bg-opacity-60"
         onClick={openCamera}
       >
@@ -85,7 +107,35 @@ const SetQRCode = () => {
             style={{ width: '100%' }}
           />
         </div>
-      )}
+      )} */}
+      <div className="mt-6">
+        <input
+          type="text"
+          placeholder="Enter data for QR code"
+          value={inputData}
+          onChange={(e) => setInputData(e.target.value)}
+          className="p-2 border border-gray-300 rounded"
+        />
+        <button
+          onClick={generateQRCode}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2"
+        >
+          Generate QR Code
+        </button>
+        {generatedQrData && (
+          <div ref={qrRef} className="mt-4">
+            <QRCode value={generatedQrData} />
+            <div className="mt-2">
+              <button
+                onClick={downloadQRCode}
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              >
+                Download And Set This as Your  QR Code
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -69,9 +69,25 @@ export const ADD_QR_Attendance = async data => {
     try {
       console.log(data,"ADD_QR_Attendance");
       const response = await axios.post (API_URLS.ADD_QR_Attendance, data);
+      console.log(response,"ADD_QR_Attendance");
       return response.data;
     } catch (error) {
-      console.error ('Adding equipments:', error);
+      console.error ('Adding ADD_QR_Attendance:', error);
+      throw error;
+    }
+  };
+
+
+
+  export const Set_QR = async data => {
+
+    try {
+      console.log(data,"Set_QR_QR_Attendance");
+      const response = await axios.post (API_URLS.Set_QR, {data});
+      console.log(response,"ADD_QR_Attendance");
+      return response.data;
+    } catch (error) {
+      console.error ('Set_QR_QR_Attendance:', error);
       throw error;
     }
   };
