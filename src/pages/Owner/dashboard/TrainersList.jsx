@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -18,18 +18,23 @@ import {
   useMaterialTailwindController
 } from "../../../context/index";
 import {authorsTableData} from '../../../data/authors-table-data';
+import {fetchTrainers} from "../../../actions/TrainerActions"
 export const TrainersList = () => {
+  const [trainersList, setTrainersList] = useState(null);
+
+
   useEffect(() => {
-    AOS.init();
-    // const fetchMembers = async () => {
-    //   try {
-    //     const response = await List_Equipments();
-    //     setEquipments(response);
-    //   } catch (error) {
-    //     console.error('Failed to fetch equipments', error);
-    //   }
-    // };
-    // fetchEquipments();
+    const fetchTrainersList = async () => {
+      try {
+        const response = await fetchTrainers();
+        setTrainersList(response);
+        console.log("const [trainersList, setTrainersList] = useState(null);",response)
+
+      } catch (error) {
+        console.error('Failed to fetch trainersList', error);
+      }
+    };
+    fetchTrainersList();
   }, []);
 
 

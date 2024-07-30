@@ -39,7 +39,7 @@ import {
   Tooltip,
   Progress,
 } from '@material-tailwind/react';
-
+import {List_Attendance} from "../../../actions/AttendanceAction"
 export function Home() {
   const [statisticsCardsData, setStatisticsCardsData] = useState(null);
 
@@ -57,6 +57,24 @@ export function Home() {
     };
     fetchDashCount();
   }, []);
+
+  const [attendance, setAttendance] = useState(null);
+  useEffect(() => {
+    const fetchAttendance = async () => {
+      try {
+        const response = await List_Attendance();
+        setAttendance(response);
+        console.log("const [attendance, setAttendance] = useState(null);",response)
+
+      } catch (error) {
+        console.error('Failed to fetch equipments', error);
+      }
+    };
+    fetchAttendance();
+  }, []);
+
+
+
   const [controller, dispatch] = useMaterialTailwindController();
   const { sidenavType } =
     controller;
@@ -658,10 +676,10 @@ export function Home() {
                       strokeWidth={3}
                       className="h-4 w-4 text-blue-gray-200"
                     />
-                    <strong>5 Members</strong> Present Today
+                    <strong>6 Members777</strong> Present Today
                   </Typography>
                 </div>
-                <Menu placement="left-start">
+                {/* <Menu placement="left-start">
                   <MenuHandler>
                     <IconButton size="sm" variant="text" color={sidenavType === 'dark' ? "white" : "blue-gray"}>
                       <EllipsisVerticalIcon
@@ -678,7 +696,7 @@ export function Home() {
                     <MenuItem>Weekly Attendance</MenuItem>
                     <MenuItem>Monthly Attendance</MenuItem>
                   </MenuList>
-                </Menu>
+                </Menu> */}
               </CardHeader>
               <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
                 <table className="w-full min-w-[640px] table-auto">
