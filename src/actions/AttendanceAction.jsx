@@ -62,3 +62,16 @@ export const List_Attendance = async () => {
       throw error;
     }
   };
+
+
+  export const ADD_QR_Attendance = async data => {
+
+    try {
+      console.log(data,"hggghghgh");
+      const response = await axios.post (API_URLS.ADD_QR_Attendance, data);
+      return response.data;
+    } catch (error) {
+      console.error ('Adding equipments:', error);
+      throw error;
+    }
+  };
