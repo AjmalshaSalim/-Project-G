@@ -247,7 +247,7 @@ export function Home() {
     {
       color: "gray",
       icon: LuClipboardCheck,
-      title: " Payments to Confirm",
+      title: "Payments to Confirm",
       value: "",
       footer: {
         color: "text-green-500",
@@ -528,10 +528,11 @@ export function Home() {
             </div>
 
             {/* Payments to Confirm  */}
-            <div className='' onClick={handleTodaysAttendanceClick}>
+            <div className='' >
+            <Link to="/dashboard/ConfirmPayments" className='w-full'>
               <StatisticsCard
                 key={PaymentsToConfirmCardData.title}
-                // {...TodaysAttendanceCardData}
+               
                 value={statisticsCardsData ? statisticsCardsData.enquiry_count : "00"}
                 title={PaymentsToConfirmCardData.title}
                 icon={React.createElement(PaymentsToConfirmCardData.icon, {
@@ -545,6 +546,7 @@ export function Home() {
                   </Typography>
                 }
               />
+              </Link>
             </div>
 
             {/* Pending Payments  */}
