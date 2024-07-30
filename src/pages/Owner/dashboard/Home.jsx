@@ -59,6 +59,7 @@ export function Home() {
   }, []);
 
   const [attendance, setAttendance] = useState(null);
+  const [graphDatas, setGraphDatas] = useState(null);
   useEffect(() => {
     const fetchAttendance = async () => {
       try {
@@ -70,7 +71,18 @@ export function Home() {
         console.error('Failed to fetch equipments', error);
       }
     };
+    const fetchGraphDatas = async () => {
+      try {
+        const response = await List_Attendance();
+        setAttendance(response);
+        console.log("  const [graphDatas, setGraphDatas] = useState(null);",response)
+
+      } catch (error) {
+        console.error('Failed to fetch graphDatas', error);
+      }
+    };
     fetchAttendance();
+    fetchGraphDatas()
   }, []);
 
 
