@@ -6,7 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { MdOutlineQrCodeScanner } from "react-icons/md";
 import { Tooltip } from "@material-tailwind/react";
 import {User_Profile} from "../../actions/UserActions"
-
+import {ADD_QR_Attendance} from "../../actions/AttendanceAction"
 
 const Hero = () => {
   const [qrData, setQrData] = useState('');
@@ -14,11 +14,27 @@ const Hero = () => {
   const [profileDetails, setProfileDetails] = useState({});
   const [percentage, setPercentage] = useState(0);
   
-  const handleScan = (data) => {
+  const handleScan = async (data) => {
     if (data) {
       setQrData(data);
-      localStorage.setItem('qrData', data); 
-      window.location.reload(); 
+  
+      try {
+        const response = await ADD_QR_Attendance(data);
+        if (response.status === 201) {
+          console.log('Attendance recorded successfully', response);
+          localStorage.setItem('qrData', data);
+          window.location.reload();
+        } else {
+          console.error('Failed to record attendance', response);
+          alert('Failed to record attendance. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error occurred while recording attendance', error);
+        alert('An error occurred while recording attendance. Please try again.');
+      }
+    } else {
+      console.warn('No data received from QR scan');
+      alert('No data received from QR scan. Please try again.');
     }
   };
 

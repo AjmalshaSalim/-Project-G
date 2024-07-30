@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   //  baseURL: 'https://achujozef.pythonanywhere.com',
-   baseURL: 'http://127.0.0.1:8000',
+  baseURL: 'http://127.0.0.1:8000',
   headers:{
     'Authorization': localStorage.getItem('userAccessToken') ? 'Bearer ' + localStorage.getItem('userAccessToken') : null,
     'Content-Type': 'multipart/form-data',

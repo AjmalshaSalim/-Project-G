@@ -19,6 +19,7 @@ const Delete_Equipments='/api/delete-equipment/'
 const Create_Slot='/api/create-slots/'
 const Filter_Attendance ='/api/attendance/filter/'
 const ADD_Attendance ='/api/mark-attendance/'
+const ADD_QR_Attendance ='/api/attendance/qr/'
 const View_Attendance ='/api/attendance/'
 const Search_user_For_Attendance ='/api/user-details/'
 const Type_Attendance ='/api/attendance/filter/'
@@ -63,6 +64,7 @@ export const API_URLS = {
     CREATE_SLOT:`${Create_Slot}`,
     Filter_Attendance:`${Filter_Attendance}`,
     ADD_Attendance:`${ADD_Attendance}`,
+    ADD_QR_Attendance:`${ADD_QR_Attendance}`,
     View_Attendance:`${View_Attendance}`,
     Search_user_For_Attendance:`${Search_user_For_Attendance}`,
     TYPE_ATTENDANCE:`${Type_Attendance}`,
