@@ -26,7 +26,7 @@ import {
 } from "@heroicons/react/24/solid";
 // import { ProfileInfoCard } from "../../../widgets/cards/profile-info-card";
 import { Link } from "react-router-dom";
-
+import {Create_Trainer} from "../../../actions/TrainerActions"
 import {fetchTrainers} from "../../../actions/TrainerActions"
 export function AddMember() {
   const navigate = useNavigate();
@@ -145,7 +145,7 @@ export function AddMember() {
 
 
 
-                {userData.profileImage ?
+                {/* {userData.profileImage ?
                   <div className="relative w-36 h-36 -mb-5">
                     <Avatar
                       src={URL.createObjectURL(userData.profileImage)}
@@ -183,7 +183,7 @@ export function AddMember() {
                     </label>
 
                   </div>
-                }
+                } */}
 
               </div>
             </div>
@@ -308,7 +308,7 @@ export function AddMember() {
 
               <div className=" pt-3 pl-5">
                 <Link to="/">
-                  <Button type="submit" onClick={handleSubmit} className={` w-[100%] lg:w-[180px] ${sidenavType === 'dark' ? "bg-red-700" : "bg-black"}`}>create user</Button>
+                  <Button type="submit" onClick={handleSubmit} className={` w-[100%] lg:w-[180px] ${sidenavType === 'dark' ? "bg-red-700" : "bg-black"}`}>create Trainer</Button>
                 </Link>
               </div>
 

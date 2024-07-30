@@ -570,7 +570,8 @@ export function Home() {
             </div>
 
             {/* Upcoming Renewals  */}
-            <div className='' onClick={handleTodaysAttendanceClick}>
+            <div className='' >
+              <Link to='/dashboard/UpcomingRenewals' className='w-full'>
               <StatisticsCard
                 key={UpcomingRenewalsCardData.title}
                 // {...TodaysAttendanceCardData}
@@ -587,10 +588,12 @@ export function Home() {
                   </Typography>
                 }
               />
+              </Link>
             </div>
 
             {/* Irregular Members  */}
-            <div className='' onClick={handleTodaysAttendanceClick}>
+            <div className='' >
+            <Link to='/dashboard/IrregularMembers' className='w-full'>
               <StatisticsCard
                 key={IrregularMembersCardData.title}
                 // {...TodaysAttendanceCardData}
@@ -607,6 +610,7 @@ export function Home() {
                   </Typography>
                 }
               />
+              </Link>
             </div>
 
           </div>
