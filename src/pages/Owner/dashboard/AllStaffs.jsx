@@ -1,5 +1,6 @@
 import React from 'react'
-import { useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
@@ -18,18 +19,22 @@ import {
   useMaterialTailwindController
 } from "../../../context/index";
 import {authorsTableData} from '../../../data/authors-table-data';
+import {fetchTrainers} from '../../../actions/TrainerActions'
 export const AllStaffs = () => {
+
+  const [staffs, setStaffs] = useState([]);
   useEffect(() => {
     AOS.init();
-    // const fetchMembers = async () => {
-    //   try {
-    //     const response = await List_Equipments();
-    //     setEquipments(response);
-    //   } catch (error) {
-    //     console.error('Failed to fetch equipments', error);
-    //   }
-    // };
-    // fetchEquipments();
+    const Trainers = async () => {
+      try {
+        const response = await fetchTrainers();
+        setStaffs(response);
+        console.log(response);
+      } catch (error) {
+        console.error('Failed to fetch Trainers', error);
+      }
+    };
+    Trainers();
   }, []);
 
 
