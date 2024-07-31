@@ -141,7 +141,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 color={sidenavType === "dark" ? "white" : "black"}
                 >
                   <ul className="flex flex-col gap-1">
-                    {pages.slice(2, 6).map(({ icon, name, path }) => (
+                    {pages.slice(2, 5).map(({ icon, name, path }) => (
                       <li key={name}>
                         <NavLink to={`/${layout}${path}`}>
                           {({ isActive }) => (

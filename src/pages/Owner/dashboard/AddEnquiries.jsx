@@ -60,8 +60,8 @@ export function AddEnquiries() {
     setEnquiry({ ...enquiry, [name]: value });
   };
 
-  const handleSelectChange = (value) => {
-    setEnquiry({ ...enquiry, planId: value });
+  const handleSelectChange = (e) => {
+    setEnquiry({ ...enquiry, planId: e });
   };
 
   const handleSubmit = async (e) => {
@@ -108,12 +108,21 @@ export function AddEnquiries() {
 
             <label htmlFor="email" className={`${sidenavType === 'dark' ? "text-white" : "text-black"}`}>Email</label>
             <Input type="email" id="email" name="email" placeholder="Email" onChange={handleChange} />
-
             <label htmlFor="planId" className={`${sidenavType === 'dark' ? "text-white" : "text-black"}`}>Choose Plan</label>
-            <Select id="planId" name="planId" onChange={(e) => handleSelectChange(e.target.value)} defaultValue="">
-              <Option className={`${sidenavType === 'dark' ? "bg-gray-800" : "bg-black"}`} disabled value="">Choose Plan</Option>
+            <Select
+              id="planId"
+              name="planId"
+              onChange={handleSelectChange}
+              value={enquiry.planId}
+              placeholder="Select"
+            >
+              <Option className={`${sidenavType === 'dark' ? "bg-gray-800" : "bg-black"}`} disabled value="">
+                Select
+              </Option>
               {gymPlans.map(plan => (
-                <Option key={plan.id} value={plan.id}>{plan.name}</Option>
+                <Option key={plan.id} value={plan.id}>
+                  {plan.name}
+                </Option>
               ))}
             </Select>
 
