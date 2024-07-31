@@ -18,7 +18,6 @@ import {
 import {
   useMaterialTailwindController
 } from "../../../context/index";
-import {authorsTableData} from '../../../data/authors-table-data';
 import {fetchTrainers} from '../../../actions/TrainerActions'
 export const AllStaffs = () => {
 
@@ -71,7 +70,7 @@ export const AllStaffs = () => {
                   'Member',
                   'Job',
                   'status',
-                  'Joined',
+                  'Phone',
                   '',
                 ].map (el => (
                   <th
@@ -89,17 +88,17 @@ export const AllStaffs = () => {
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map (
-                ({img, name, email, job, online, date}, key) => {
-                  const className = `py-3 px-5 ${key === authorsTableData.length - 1 ? '' : (sidenavType === 'dark' ? 'border-b border-gray-900' : 'border-b border-red-50')}`;
+              {staffs.map (
+                ({profile_picture, user, areas_of_expertise, certification_level, contact_number}, key) => {
+                  const className = `py-3 px-5 ${key === staffs.length - 1 ? '' : (sidenavType === 'dark' ? 'border-b border-gray-900' : 'border-b border-red-50')}`;
 
                   return (
-                    <tr key={name}>
+                    <tr key={user.first_name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
                           <Avatar
-                            src={img}
-                            alt={name}
+                            src={profile_picture}
+                            alt={user.first_name}
                             size="sm"
                             variant="rounded"
                           />
@@ -109,10 +108,10 @@ export const AllStaffs = () => {
                               color={sidenavType === 'dark'? "white" : "blue-gray"}
                               className="font-semibold"
                             >
-                              {name}
+                              {user.first_name}
                             </Typography>
                             <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
+                              {user.email}
                             </Typography>
                           </div>
                         </div>
@@ -121,17 +120,17 @@ export const AllStaffs = () => {
                         <Typography className={`text-xs font-semibold ${
       sidenavType === "dark" ? "text-white" : "text-blue-gray-600"
     }`}>
-                          {job[0]}
+                          {areas_of_expertise}
                         </Typography>
                         <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                          {certification_level}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Chip
                           variant="gradient"
-                          color={online ? 'green' : 'red'}
-                          value={online ? 'active' : 'inactive'}
+                          color={'green'}
+                          value={'active'}
                           className="py-0.5 px-2 text-[11px] font-medium w-fit rounded-sm"
                         />
                       </td>
@@ -139,7 +138,7 @@ export const AllStaffs = () => {
                         <Typography className={`text-xs font-semibold ${
       sidenavType === "dark" ? "text-white" : "text-blue-gray-600"
     }`}>
-                          {date}
+                          {contact_number}
                         </Typography>
                       </td>
                       <td className={className}>
