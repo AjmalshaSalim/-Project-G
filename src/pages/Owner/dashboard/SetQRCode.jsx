@@ -28,6 +28,9 @@ const SetQRCode = () => {
 
   const openCamera = () => {
     setIsCameraOpen(true);
+    setTimeout(()=>{
+closeCamera();
+    },30000)
   };
 
   const closeCamera = () => {
