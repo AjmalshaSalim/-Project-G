@@ -19,7 +19,7 @@ import {
   useMaterialTailwindController
 } from "../../../context/index";
 import {authorsTableData} from '../../../data/authors-table-data';
-import {fetchTrainers} from '../../../actions/TrainerActions'
+import {fetchStaffss} from '../../../actions/TrainerActions'
 export const AllStaffs = () => {
 
   const [staffs, setStaffs] = useState([]);
@@ -27,7 +27,7 @@ export const AllStaffs = () => {
     AOS.init();
     const Trainers = async () => {
       try {
-        const response = await fetchTrainers();
+        const response = await fetchStaffss();
         setStaffs(response);
         console.log(response);
       } catch (error) {

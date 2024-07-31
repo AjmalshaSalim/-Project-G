@@ -33,6 +33,7 @@ const View_Trainers='/api/trainers/'
 const Create_Trainer='/api/add-trainer/'
 const List_Users='/api/gym-users/'
 const Set_QR = '/api/set-qr-code/'
+const View_Staffs = '/api/gym-stafs/'
 
 
 
@@ -81,7 +82,7 @@ export const API_URLS = {
     View_Trainers:`${View_Trainers}`,
     Create_Trainer:`${Create_Trainer}`,
     List_Users:`${List_Users}`,
-   
+    View_Staffs:`${View_Staffs}`,
     Set_QR:`${Set_QR}`,
 
 
