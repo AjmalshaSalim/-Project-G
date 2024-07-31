@@ -19,7 +19,7 @@ import {
 } from '@material-tailwind/react';
 import { useMaterialTailwindController } from "../../../context/index";
 import { List_Gym_Plans } from "../../../actions/GymPlansActions";
-
+import {CreateEnquiry} from "../../../actions/EnquirieActions"
 export function AddEnquiries() {
   const [gymPlans, setGymPlans] = useState([]);
   const navigate = useNavigate();
@@ -71,11 +71,7 @@ export function AddEnquiries() {
       formData.append(key, value);
     });
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/enquiries-create/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const response = await CreateEnquiry(formData)
       console.log(response.data);
       toast("Enquiry Added Successfully");
       navigate('/dashboard/EnquiriesList');
