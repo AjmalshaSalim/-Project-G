@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import AOS from 'aos';
 import { MdEdit } from "react-icons/md";
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { IoMdClose } from "react-icons/io";
+import {List_Enquiries} from '../../../actions/EnquirieActions'
 import {
   Card,
   CardHeader,
@@ -29,11 +30,25 @@ const enquiriesData = [
   // Add more dummy data as needed
 ];
 
+
 export function EnquiriesList() {
   useEffect(() => {
     AOS.init();
   }, []);
 
+  const [enquiries, setEnquiries] = useState([]);
+  useEffect(() => {
+    async function Enquiries() {
+      try {
+        const response = await List_Enquiries();
+        setEnquiries(response);
+        console.log('Fetched enquiries:', response);
+      } catch (error) {
+        console.error('Error fetching enquiries:', error);
+      }
+    }
+    Enquiries();
+  }, []);
   const [controller] = useMaterialTailwindController();
   const { sidenavType } = controller;
   return (

@@ -15,14 +15,14 @@ import { IoMdClose } from "react-icons/io";
 import {
   useMaterialTailwindController
 } from "../../../context/index";
-import {List_Enquiries} from '../../../actions/EnquirieActions'
+import {List_Upcoming_Enquiries} from '../../../actions/EnquirieActions'
 import  { useState } from "react";
 export function FollowupEnquiries() {
   const [enquiries, setEnquiries] = useState([]);
   useEffect(() => {
     async function Enquiries() {
       try {
-        const response = await List_Enquiries();
+        const response = await List_Upcoming_Enquiries();
         setEnquiries(response);
         console.log('Fetched enquiries:', response);
       } catch (error) {

@@ -26,6 +26,7 @@ export function MembersList() {
       try {
         const response = await List_Users();
         setMembers(response);
+        console.log(  "const [members, setMembers] = useState([]);",response);
       } catch (error) {
         console.error('Failed to fetch members', error);
       }
