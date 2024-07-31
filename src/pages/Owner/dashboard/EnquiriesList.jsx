@@ -52,7 +52,7 @@ export function EnquiriesList() {
             <CardBody className={`w-full bg-red-600 px-0 pt-0 pb-2 ${sidenavType === 'dark' ? "bg-gray-900 bg-opacity-40" : "bg-white"}`}>
               <div className='w-full flex justify-between items-center pr-6'>
                 <div></div>
-                <Link to='/dashboard/AddEnquiry'>
+                <Link to='/dashboard/AddEnquiries'>
                   <Button size='sm' className={`py-3 ${sidenavType === 'dark' ? "bg-red-700" : "bg-black"}`}>Add Enquiry</Button>
                 </Link>
               </div>

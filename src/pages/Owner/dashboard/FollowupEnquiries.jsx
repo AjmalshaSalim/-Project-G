@@ -15,7 +15,6 @@ import { IoMdClose } from "react-icons/io";
 import {
   useMaterialTailwindController
 } from "../../../context/index";
-import {authorsEnquiryData} from '../../../data/authors-enquiry-data';
 import {List_Enquiries} from '../../../actions/EnquirieActions'
 import  { useState } from "react";
 export function FollowupEnquiries() {
@@ -65,8 +64,8 @@ export function FollowupEnquiries() {
             <thead>
               <tr>
                 {[
-                  'Member',
-                  'Job',
+                  'Name',
+                  'Place & Plan',
                   'Mobile No.',
                   'Enquiry Date',
                   '',
@@ -86,20 +85,15 @@ export function FollowupEnquiries() {
               </tr>
             </thead>
             <tbody>
-              {authorsEnquiryData.map (
-                ({img, name, email, job, mobile, enquiryDate}, key) => {
-                  const className = `py-3 px-5 ${key === authorsEnquiryData.length - 1 ? '' : (sidenavType === 'dark' ? 'border-b border-gray-900' : 'border-b border-red-50')}`;
+              {enquiries.map (
+                ({name, email, place, plan, phone_number, follow_up_date}, key) => {
+                  const className = `py-3 px-5 ${key === enquiries.length - 1 ? '' : (sidenavType === 'dark' ? 'border-b border-gray-900' : 'border-b border-red-50')}`;
 
                   return (
                     <tr key={name}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar
-                            src={img}
-                            alt={name}
-                            size="sm"
-                            variant="rounded"
-                          />
+                          
                           <div>
                             <Typography
                               variant="small"
@@ -118,24 +112,24 @@ export function FollowupEnquiries() {
                         <Typography className={`text-xs font-semibold ${
       sidenavType === "dark" ? "text-white" : "text-blue-gray-600"
     }`}>
-                          {job[0]}
+                          {place}
                         </Typography>
                         <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                          {plan}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Typography className={`text-xs font-semibold ${
       sidenavType === "dark" ? "text-white" : "text-blue-gray-600"
     }`}>
-                          {mobile}
+                          {phone_number}
                         </Typography>
                       </td>
                       <td className={className}>
                         <Typography className={`text-xs font-semibold ${
       sidenavType === "dark" ? "text-white" : "text-blue-gray-600"
     }`}>
-                          {enquiryDate}
+                          {follow_up_date}
                         </Typography>
                       </td>
                       <td className={className}>

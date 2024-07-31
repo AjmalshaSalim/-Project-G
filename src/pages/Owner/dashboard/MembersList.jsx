@@ -67,7 +67,7 @@ console.log(dispatch);
                   <tr>
                     {[
                       'Member',
-                      'Job',
+                      'Joined',
                       'Status',
                       'Contact',
                       '',
@@ -88,7 +88,7 @@ console.log(dispatch);
                 </thead>
                 <tbody>
                   {members.map(
-                    ({ profile_picture, user, email, proffession, date_of_birth, contact_number, is_active }, key) => {
+                    ({ profile_picture, user, email, proffession, joining_date, contact_number, is_active }, key) => {
                       const className = `py-3 px-5 ${key === members.length - 1 ? '' : (sidenavType === 'dark' ? 'border-b border-gray-900' : 'border-b border-red-50')}`;
 
                       return (
@@ -122,7 +122,7 @@ console.log(dispatch);
                               {proffession}
                             </Typography>
                             <Typography className="text-xs font-normal text-blue-gray-500">
-                              {date_of_birth}
+                              {joining_date}
                             </Typography>
                           </td>
                           <td className={className}>
