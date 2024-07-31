@@ -41,7 +41,7 @@ const List_Upcoming_Enquiries = '/api/enquiries/upcoming-follow-up/'
 const List_Enquiries = '/api/enquiries/followup/'
 const Enquiry_Update = '/api/enquiries/update/'
 const Enquiry_Delete = '/api/enquiries/delete/'
-const Enquiry_Create = 'api/enquiries-create/'
+const Enquiry_Create = '/api/enquiries-create/'
 
 
 

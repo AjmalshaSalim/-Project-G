@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 
 import {fetchTrainers} from "../../../actions/TrainerActions"
 import {List_Gym_Plans} from "../../../actions/GymPlansActions"
-import {Add_Member} from "../../../actions/AddUserActions"
+import {Add_Member} from "../../../actions/UserActions"
 export function AddMember() {
   const navigate = useNavigate();
   const [controller] = useMaterialTailwindController();
@@ -129,17 +129,17 @@ export function AddMember() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('FormData:', userData); //
-    const formData = new FormData();
-    Object.entries(userData).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
+    // const formData = new FormData();
+    // Object.entries(userData).forEach(([key, value]) => {
+    //   formData.append(key, value);
+    // });
 
     try {
-      const response = Add_Member(formData)
+      const response = Add_Member(userData)
 
       console.log(response.data);
-      toast("User Created Successfully")
-      navigate('/dashboard/MembersList')
+      // toast("User Created Successfully")
+      // navigate('/dashboard/MembersList')
     } catch (error) {
       console.error('Error adding member:', error);
     }

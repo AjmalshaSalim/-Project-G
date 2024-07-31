@@ -1,7 +1,7 @@
 import axios from '../axios';
 import {API_URLS} from '../constants/config';
 
-export const ADD_Equipments = async data => {
+export const Add_Member = async data => {
     try {
       const response = await axios.post (API_URLS.ADD_MEMBERS, data);
       return response.data;
