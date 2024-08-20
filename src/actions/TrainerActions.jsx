@@ -13,7 +13,17 @@ export const fetchTrainers = async () => {
     }
   };
 
+  export const fetchStaffss = async () => {
 
+    try {
+      const response = await axios.get (API_URLS.View_Staffs);
+      console.log("fetchStaffss",response.data)
+      return response.data;
+    } catch (error) {
+      console.error ('Fetching fetchStaffss:', error);
+      throw error;
+    }
+  };
   export const Create_Trainer = async (data )=> {
     console.log(data);
     try {
