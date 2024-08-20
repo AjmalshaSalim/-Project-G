@@ -2,6 +2,7 @@ import React from "react";
 import { MdNightlight } from "react-icons/md";
 import { MdWbSunny } from "react-icons/md";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { IoLogOut } from "react-icons/io5";
 import {
   Button,
   IconButton,
@@ -65,6 +66,13 @@ export function Configurator() {
       .then((response) => response.json())
       .then((data) => setStars(formatNumber(data.stargazers_count, 1)));
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userAccessToken');
+    // Refresh the page after logging out
+    window.location.reload();
+  };
 
   return (
     <aside
@@ -151,6 +159,12 @@ export function Configurator() {
               onChange={() => setFixedNavbar(dispatch, !fixedNavbar)}
             />
           </div>
+          <Button
+          onClick={logout}
+              className={` outline-none flex ${sidenavType === "white" ? "bg-black " : " border bg-transparent"}`}
+            >
+            <IoLogOut className=" text-lg text-white capitalize"/>&nbsp; Logout
+            </Button>
           <hr />
 
           
