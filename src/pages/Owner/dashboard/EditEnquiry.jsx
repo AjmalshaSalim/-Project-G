@@ -55,7 +55,7 @@ export function EditEnquiry() {
           <Typography variant="h6" color="white" className=' ml-6 w-28'>
             Edit Enquiry
           </Typography>
-          <Link to="/dashboard/home" className='w-full'>
+          <Link to="/dashboard/Home" className='w-full'>
               <IoMdClose className=' w-8 h-8 absolute right-7 top-5 bg-gray-700 rounded-full p-[5px] text-gray-900 hover:bg-gray-500'/>
               </Link>
         </CardHeader>
