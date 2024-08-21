@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-   baseURL: 'https://achujozef.pythonanywhere.com',
-  // baseURL: 'http://127.0.0.1:8000',
+  //  baseURL: 'https://achujozef.pythonanywhere.com',
+  baseURL: 'http://127.0.0.1:8000',
   headers:{
     'Authorization': localStorage.getItem('userAccessToken') ? 'Bearer ' + localStorage.getItem('userAccessToken') : null,
     'Content-Type': 'multipart/form-data',
@@ -17,10 +17,10 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+      originalRequest._retry = true; 
       try {
-        const response = await axios.post('https://achujozef.pythonanywhere.com/api/token/refresh/', {
-        // const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
+        // const response = await axios.post('https://achujozef.pythonanywhere.com/api/token/refresh/', {
+        const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/', {
           refresh : localStorage.getItem('userRefreshToken'),
         }, 
         );

@@ -45,8 +45,8 @@ const Enquiry_Delete = '/api/enquiries/delete/'
 const Enquiry_Create = '/api/enquiries-create/'
 
 
-
-
+const ExpiredMemberships = '/api/expired_memberships/'
+const ExpiringMemberships = '/api/expiring_memberships/'
 
 
 export const API_URLS = {
@@ -92,5 +92,9 @@ export const API_URLS = {
     Enquiry_Update : `${Enquiry_Update}`,
     Enquiry_Delete :`${Enquiry_Delete}`,
     Enquiry_Create : `${Enquiry_Create}`,
+
+
+    ExpiredMemberships:`${ExpiredMemberships}`,
+    ExpiringMemberships:`${ExpiringMemberships}`,
 }
 

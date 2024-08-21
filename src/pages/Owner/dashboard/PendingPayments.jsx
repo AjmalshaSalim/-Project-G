@@ -16,7 +16,7 @@ import {
 import {
   useMaterialTailwindController
 } from "../../../context/index";
-import { List_Users } from "../../../actions/UserActions"
+import { List_Pending_Payments } from "../../../actions/GymPlansActions"
 
 export function PendingPayments() {
   const [members, setMembers] = useState([]);
@@ -24,7 +24,7 @@ export function PendingPayments() {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await List_Users();
+        const response = await List_Pending_Payments();
         setMembers(response);
         console.log(  "const [members, setMembers] = useState([]);",response);
       } catch (error) {
