@@ -42,6 +42,14 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const handleToggleDietPlanSection = () => {
     setOpenDietPlanSection(!openDietPlanSection);
   };
+
+  const closeAllPopovers = () => {
+    setOpenEnquirySection(false);
+    setOpenMemberSection(false);
+    setOpenPlanSection(false);
+    setOpenDietPlanSection(false);
+  };
+
   return (
     <aside
       className={`${sidenavTypes[sidenavType]} ${
@@ -92,7 +100,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             )}
             {pages.slice(0, 2).map(({ icon, name, path }) => (
               <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
+                <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "red" : "text"}
@@ -143,7 +151,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   <ul className="flex flex-col gap-1">
                     {pages.slice(2, 5).map(({ icon, name, path }) => (
                       <li key={name}>
-                        <NavLink to={`/${layout}${path}`}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleToggleMemberSection();
+                        }}>
                           {({ isActive }) => (
                             <Button
                               variant={isActive ? "red" : "text"}
@@ -198,7 +209,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   <ul className="flex flex-col gap-1">
                     {pages.slice(6, 9).map(({ icon, name, path }) => (
                       <li key={name}>
-                        <NavLink to={`/${layout}${path}`}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleToggleEnquirySection();
+                        }}>
                           {({ isActive }) => (
                             <Button
                               variant={isActive ? "red" : "text"}
@@ -232,7 +246,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
             {pages.slice(9,12).map(({ icon, name, path }) => (
               <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
+                <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "red" : "text"}
@@ -283,7 +297,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   <ul className="flex flex-col gap-1">
                     {pages.slice(12, 15).map(({ icon, name, path }) => (
                       <li key={name}>
-                        <NavLink to={`/${layout}${path}`}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleTogglePlanSection();
+                        }}>
                           {({ isActive }) => (
                             <Button
                               variant={isActive ? "red" : "text"}
@@ -317,7 +334,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
 
             {pages.slice(15,21).map(({ icon, name, path }) => (
               <li key={name}>
-                <NavLink to={`/${layout}${path}`}>
+                <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
                   {({ isActive }) => (
                     <Button
                       variant={isActive ? "red" : "text"}
