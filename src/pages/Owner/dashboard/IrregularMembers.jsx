@@ -16,7 +16,7 @@ import {
 import {
   useMaterialTailwindController
 } from "../../../context/index";
-import { List_Users } from "../../../actions/UserActions"
+import { List_IrregularMembers } from "../../../actions/AttendanceAction"
 
 export function IrregularMembers() {
   const [members, setMembers] = useState([]);
@@ -24,11 +24,11 @@ export function IrregularMembers() {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await List_Users();
+        const response = await List_IrregularMembers();
         setMembers(response);
         console.log(  "const [members, setMembers] = useState([]);",response);
       } catch (error) {
-        console.error('Failed to fetch members', error);
+        console.error('Failed to fetch List_IrregularMembers', error);
       }
     };
     fetchMembers();

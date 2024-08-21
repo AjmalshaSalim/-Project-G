@@ -91,3 +91,15 @@ export const ADD_QR_Attendance = async data => {
       throw error;
     }
   };
+
+
+  export const List_IrregularMembers = async () => {
+
+    try {
+      const response = await axios.get (API_URLS.IrregularMembers);
+      return response.data;
+    } catch (error) {
+      console.error ('Adding equipments:', error);
+      throw error;
+    }
+  };
