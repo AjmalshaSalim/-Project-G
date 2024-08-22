@@ -28,7 +28,10 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const [openEnquirySection, setOpenEnquirySection] = useState(false);
   const [openMemberSection, setOpenMemberSection] = useState(false);
   const [openPlanSection, setOpenPlanSection] = useState(false);
+  const [openTrainersSection, setOpenTrainersSection] = useState(false);
   const [openDietPlanSection, setOpenDietPlanSection] = useState(false);
+  const [openStaffsSection, setOpenStaffsSection] = useState(false);
+  const [openPaymentsSection, setOpenPaymentsSection] = useState(false);
 
   const handleToggleEnquirySection = () => {
     setOpenEnquirySection(!openEnquirySection);
@@ -39,8 +42,17 @@ export function Sidenav({ brandImg, brandName, routes }) {
   const handleTogglePlanSection = () => {
     setOpenPlanSection(!openPlanSection);
   };
+  const handleToggleTrainersSection = () => {
+    setOpenTrainersSection(!openTrainersSection);
+  };
+  const handleToggleStaffsSection = () => {
+    setOpenStaffsSection(!openStaffsSection);
+  };
   const handleToggleDietPlanSection = () => {
     setOpenDietPlanSection(!openDietPlanSection);
+  };
+  const handleTogglePaymentsSection = () => {
+    setOpenPaymentsSection(!openPaymentsSection);
   };
 
   const closeAllPopovers = () => {
@@ -48,6 +60,9 @@ export function Sidenav({ brandImg, brandName, routes }) {
     setOpenMemberSection(false);
     setOpenPlanSection(false);
     setOpenDietPlanSection(false);
+    setOpenPaymentsSection(false);
+     setOpenTrainersSection(false);
+     setOpenStaffsSection(false);
   };
 
   return (
@@ -141,7 +156,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       color="inherit"
                       className="font-medium capitalize text-sm flex"
                     >
-                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Enquiry Management
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Enquiries
                     </Typography>
                   </Button>
                 </PopoverHandler>
@@ -199,7 +214,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       color="inherit"
                       className="font-medium capitalize text-sm flex"
                     >
-                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Members Management
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Members
                     </Typography>
                   </Button>
                 </PopoverHandler>
@@ -244,7 +259,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
             </li>
 
 
-            {pages.slice(9,12).map(({ icon, name, path }) => (
+            {/* {pages.slice(9,13).map(({ icon, name, path }) => (
               <li key={name}>
                 <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
                   {({ isActive }) => (
@@ -271,8 +286,121 @@ export function Sidenav({ brandImg, brandName, routes }) {
                   )}
                 </NavLink>
               </li>
-            ))}
+            ))} */}
 
+<li>
+              <Popover placement="right-start" open={openStaffsSection} handler={handleToggleStaffsSection}>
+                <PopoverHandler>
+                  <Button
+                    variant="text"
+                    color={sidenavType === "dark" ? "white" : "black"}
+                    className="flex items-center gap-4 w-60 capitalize"
+                    fullWidth
+                  >
+                    <Typography
+                      color="inherit"
+                      className="font-medium capitalize text-sm flex"
+                    >
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Staffs
+                    </Typography>
+                  </Button>
+                </PopoverHandler>
+                <PopoverContent className={sidenavType=== 'dark' ? `p-0 bg-gray-800 z-55 border-4 border-gray-800`:`bg-white z-55`}
+                color={sidenavType === "dark" ? "white" : "black"}
+                >
+                  <ul className="flex flex-col gap-1">
+                    {pages.slice(9, 11).map(({ icon, name, path }) => (
+                      <li key={name}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleToggleStaffsSection();
+                        }}>
+                          {({ isActive }) => (
+                            <Button
+                              variant={isActive ? "red" : "text"}
+                              color={
+                                isActive
+                                  ? sidenavColor
+                                  : sidenavType === "dark"
+                                  ? "white"
+                                  : "black"
+                              }
+                              className={sidenavType === 'dark' ? `flex items-center gap-4 w-60 capitalize ${isActive ? "bg-red-700" : "bg-transparent"}` : `flex w-60 items-center gap-4 px-4 capitalize ${isActive ? "bg-black" : "bg-transparent"}`}
+                              fullWidth
+                            >
+                              {icon}
+                              <Typography
+                                color="inherit"
+                                className="font-medium capitalize text-sm  hover:space-x-4"
+                              >
+                                {name}
+                              </Typography>
+                            </Button>
+                          )}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            </li>
+<li>
+              <Popover placement="right-start" open={openTrainersSection} handler={handleToggleTrainersSection}>
+                <PopoverHandler>
+                  <Button
+                    variant="text"
+                    color={sidenavType === "dark" ? "white" : "black"}
+                    className="flex items-center gap-4 w-60 capitalize"
+                    fullWidth
+                  >
+                    <Typography
+                      color="inherit"
+                      className="font-medium capitalize text-sm flex"
+                    >
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Trainers
+                    </Typography>
+                  </Button>
+                </PopoverHandler>
+                <PopoverContent className={sidenavType=== 'dark' ? `p-0 bg-gray-800 z-55 border-4 border-gray-800`:`bg-white z-55`}
+                color={sidenavType === "dark" ? "white" : "black"}
+                >
+                  <ul className="flex flex-col gap-1">
+                    {pages.slice(11, 13).map(({ icon, name, path }) => (
+                      <li key={name}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleToggleTrainersSection();
+                        }}>
+                          {({ isActive }) => (
+                            <Button
+                              variant={isActive ? "red" : "text"}
+                              color={
+                                isActive
+                                  ? sidenavColor
+                                  : sidenavType === "dark"
+                                  ? "white"
+                                  : "black"
+                              }
+                              className={sidenavType === 'dark' ? `flex items-center gap-4 w-60 capitalize ${isActive ? "bg-red-700" : "bg-transparent"}` : `flex w-60 items-center gap-4 px-4 capitalize ${isActive ? "bg-black" : "bg-transparent"}`}
+                              fullWidth
+                            >
+                              {icon}
+                              <Typography
+                                color="inherit"
+                                className="font-medium capitalize text-sm  hover:space-x-4"
+                              >
+                                {name}
+                              </Typography>
+                            </Button>
+                          )}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            </li>
+           
 
             <li>
               <Popover placement="right-start" open={openPlanSection} handler={handleTogglePlanSection}>
@@ -287,7 +415,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       color="inherit"
                       className="font-medium capitalize text-sm flex"
                     >
-                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Plans Management
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Plans
                     </Typography>
                   </Button>
                 </PopoverHandler>
@@ -295,7 +423,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 color={sidenavType === "dark" ? "white" : "black"}
                 >
                   <ul className="flex flex-col gap-1">
-                    {pages.slice(12, 15).map(({ icon, name, path }) => (
+                    {pages.slice(13, 15).map(({ icon, name, path }) => (
                       <li key={name}>
                         <NavLink to={`/${layout}${path}`} onClick={() => {
                           closeAllPopovers();
@@ -330,38 +458,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 </PopoverContent>
               </Popover>
             </li>
-
-
-            {pages.slice(15,21).map(({ icon, name, path }) => (
-              <li key={name}>
-                <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
-                  {({ isActive }) => (
-                    <Button
-                      variant={isActive ? "red" : "text"}
-                      color={
-                        isActive
-                          ? sidenavColor
-                          : sidenavType === "dark"
-                          ? "white"
-                          : "black"
-                      }
-                      className={sidenavType === 'dark' ? `flex items-center gap-4 w-60 capitalize ${isActive ? "bg-red-700" : "bg-transparent"}` : `flex w-60 items-center gap-4 px-4 capitalize ${isActive ? "bg-black" : "bg-transparent"}`}
-                      fullWidth
-                    >
-                      {icon}
-                      <Typography
-                        color="inherit"
-                        className="font-medium capitalize text-sm  hover:space-x-4"
-                      >
-                        {name}
-                      </Typography>
-                    </Button>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-
-<li>
+            <li>
               <Popover placement="right-start" open={openDietPlanSection} handler={handleToggleDietPlanSection}>
                 <PopoverHandler>
                   <Button
@@ -374,7 +471,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                       color="inherit"
                       className="font-medium capitalize text-sm flex"
                     >
-                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp;Diet Plan Management
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp;Diet Plans
                     </Typography>
                   </Button>
                 </PopoverHandler>
@@ -382,7 +479,7 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 color={sidenavType === "dark" ? "white" : "black"}
                 >
                   <ul className="flex flex-col gap-1">
-                    {pages.slice(21, 23).map(({ icon, name, path }) => (
+                    {pages.slice(20, 22).map(({ icon, name, path }) => (
                       <li key={name}>
                         <NavLink to={`/${layout}${path}`}>
                           {({ isActive }) => (
@@ -414,6 +511,92 @@ export function Sidenav({ brandImg, brandName, routes }) {
                 </PopoverContent>
               </Popover>
             </li>
+            <li>
+              <Popover placement="right-start" open={openPaymentsSection} handler={handleTogglePaymentsSection}>
+                <PopoverHandler>
+                  <Button
+                    variant="text"
+                    color={sidenavType === "dark" ? "white" : "black"}
+                    className="flex items-center gap-4 w-60 capitalize"
+                    fullWidth
+                  >
+                    <Typography
+                      color="inherit"
+                      className="font-medium capitalize text-sm flex"
+                    >
+                     <IoIosArrowForward className=" text-xl"/> &nbsp; &nbsp; &nbsp; Payments
+                    </Typography>
+                  </Button>
+                </PopoverHandler>
+                <PopoverContent className={sidenavType=== 'dark' ? `p-0 bg-gray-800 z-55 border-4 border-gray-800`:`bg-white z-55`}
+                color={sidenavType === "dark" ? "white" : "black"}
+                >
+                  <ul className="flex flex-col gap-1">
+                    {pages.slice(15, 18).map(({ icon, name, path }) => (
+                      <li key={name}>
+                        <NavLink to={`/${layout}${path}`} onClick={() => {
+                          closeAllPopovers();
+                          handleTogglePaymentsSection();
+                        }}>
+                          {({ isActive }) => (
+                            <Button
+                              variant={isActive ? "red" : "text"}
+                              color={
+                                isActive
+                                  ? sidenavColor
+                                  : sidenavType === "dark"
+                                  ? "white"
+                                  : "black"
+                              }
+                              className={sidenavType === 'dark' ? `flex items-center gap-4 w-60 capitalize ${isActive ? "bg-red-700" : "bg-transparent"}` : `flex w-60 items-center gap-4 px-4 capitalize ${isActive ? "bg-black" : "bg-transparent"}`}
+                              fullWidth
+                            >
+                              {icon}
+                              <Typography
+                                color="inherit"
+                                className="font-medium capitalize text-sm  hover:space-x-4"
+                              >
+                                {name}
+                              </Typography>
+                            </Button>
+                          )}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </PopoverContent>
+              </Popover>
+            </li>
+            {pages.slice(18,20).map(({ icon, name, path }) => (
+              <li key={name}>
+                <NavLink to={`/${layout}${path}`} onClick={closeAllPopovers}>
+                  {({ isActive }) => (
+                    <Button
+                      variant={isActive ? "red" : "text"}
+                      color={
+                        isActive
+                          ? sidenavColor
+                          : sidenavType === "dark"
+                          ? "white"
+                          : "black"
+                      }
+                      className={sidenavType === 'dark' ? `flex items-center gap-4 w-60 capitalize ${isActive ? "bg-red-700" : "bg-transparent"}` : `flex w-60 items-center gap-4 px-4 capitalize ${isActive ? "bg-black" : "bg-transparent"}`}
+                      fullWidth
+                    >
+                      {icon}
+                      <Typography
+                        color="inherit"
+                        className="font-medium capitalize text-sm  hover:space-x-4"
+                      >
+                        {name}
+                      </Typography>
+                    </Button>
+                  )}
+                </NavLink>
+              </li>
+            ))}
+
+
 
 
             {pages.slice(23).map(({ icon, name, path }) => (

@@ -4,6 +4,27 @@ import {
   ServerStackIcon,
   RectangleStackIcon,
 } from '@heroicons/react/24/solid';
+import { IoBarChartSharp } from "react-icons/io5";
+import { MdAssignment } from "react-icons/md";
+import { FaPersonCirclePlus } from "react-icons/fa6";
+import { MdFormatListNumbered } from "react-icons/md";
+import { IoFootsteps } from "react-icons/io5";
+import { FaPersonCircleExclamation } from "react-icons/fa6";
+import { MdOutlineSportsKabaddi } from "react-icons/md";
+import { FaClipboardUser } from "react-icons/fa6";
+import { MdTableRows } from "react-icons/md";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { MdOutlinePendingActions } from "react-icons/md";
+import { TbAlertSquareFilled } from "react-icons/tb";
+import { BsPersonFillAdd } from "react-icons/bs";
+import { FaCheckToSlot } from "react-icons/fa6";
+import { MdFormatListBulletedAdd } from "react-icons/md";
+import { MdNoFood } from "react-icons/md";
+import { TbCoinRupeeFilled } from "react-icons/tb";
+import { IoQrCode } from "react-icons/io5";
+
+
+
 import { FaDumbbell } from "react-icons/fa";
 import { HiUserCircle } from "react-icons/hi";
 import { FaUsers } from "react-icons/fa";
@@ -26,6 +47,7 @@ import {AddEnquiries} from './pages/Owner/dashboard/AddEnquiries'
 import {EditEnquiry} from './pages/Owner/dashboard/EditEnquiry'
 import {EnquiriesList} from './pages/Owner/dashboard/EnquiriesList'
 import {AllStaffs} from './pages/Owner/dashboard/AllStaffs'
+import {AddStaffs} from './pages/Owner/dashboard/AddStaffs'
 import {CreateSlots} from './pages/Owner/dashboard/CreateSlots'
 import {Plans} from './pages/Owner/dashboard/Plans'
 import CreatePlans from './pages/Owner/dashboard/CreatePlans';
@@ -48,31 +70,31 @@ export const routes = [
     layout: 'dashboard',
     pages: [
       {
-        icon: <HomeIcon {...icon} />,
+        icon: <IoBarChartSharp {...icon} />,
         name: 'dashboard',
         path: '/home',
         element: <Home />,
       },
       {
-        icon: <FaClipboardList {...icon} />,
-        name: 'Attendance List',
+        icon: <MdAssignment {...icon} />,
+        name: 'Attendances',
         path: '/AttendanceList',
         element: <AttendanceList />,
       },
       {
-        icon: <UserPlusIcon {...icon} />,
+        icon: <FaPersonCirclePlus {...icon} />,
         name: 'Add Enquiries',
         path: '/AddEnquiries',
         element: <AddEnquiries />,
       },
       {
-        icon: <UserPlusIcon {...icon} />,
+        icon: <MdFormatListNumbered {...icon} />,
         name: 'Enquiries List',
         path: '/EnquiriesList',
         element: <EnquiriesList />,
       },
       {
-        icon: <UserPlusIcon {...icon} />,
+        icon: <IoFootsteps {...icon} />,
         name: 'Enquiries Followup',
         path: '/FollowupEnquiries',
         element: <FollowupEnquiries />,
@@ -102,7 +124,7 @@ export const routes = [
       //   element: <Profile />,
       // },
       {
-        icon: <HiUserCircle {...icon} />,
+        icon: <FaPersonCircleExclamation {...icon} />,
         name: 'Irregular Members',
         path: '/IrregularMembers',
         element: <IrregularMembers />,
@@ -114,13 +136,19 @@ export const routes = [
         element: <AllStaffs />,
       },
       {
-        icon: <UserPlusIcon {...icon} />,
+        icon: <BsPersonFillAdd {...icon} />,
+        name: 'Add Staffs',
+        path: '/AddStaffs',
+        element: <AddStaffs />,
+      },
+      {
+        icon: <FaClipboardUser {...icon} />,
         name: 'Add Trainer',
         path: '/AddTrainer',
         element: <AddTrainer />,
       },
       {
-        icon: <FaUserTie {...icon} />,
+        icon: <MdOutlineSportsKabaddi {...icon} />,
         name: 'All Trainers',
         path: '/TrainersList',
         element: <TrainersList />,
@@ -132,43 +160,43 @@ export const routes = [
         element: <CreatePlans/>,
       },
       {
-        icon: <BiSolidOffer {...icon} />,
+        icon: < MdTableRows {...icon} />,
         name: 'All Plans',
         path: '/Plans',
         element: <Plans/>,
       },
+      // {
+      //   icon: <BsPatchPlusFill {...icon} />,
+      //   name: 'Edit Plan',
+      //   path: '/EditPlan',
+      //   element: <EditPlan/>,
+      // },
       {
-        icon: <BsPatchPlusFill {...icon} />,
-        name: 'Edit Plan',
-        path: '/EditPlan',
-        element: <EditPlan/>,
-      },
-      {
-        icon: <BsPatchPlusFill {...icon} />,
+        icon: <IoIosCheckmarkCircle {...icon} />,
         name: 'Payments to Confirm',
         path: '/ConfirmPayments',
         element: <ConfirmPayments/>,
       },
       {
-        icon: <BsPatchPlusFill {...icon} />,
+        icon: <MdOutlinePendingActions {...icon} />,
         name: 'Pending Payments',
         path: '/PendingPayments',
         element: <PendingPayments/>,
       },
       {
-        icon: <BsPatchPlusFill {...icon} />,
+        icon: <TbAlertSquareFilled {...icon} />,
         name: 'Upcoming Renewals',
         path: '/UpcomingRenewals',
         element: <UpcomingRenewals/>,
       },
+      // {
+      //   icon: <BiSolidOffer {...icon} />,
+      //   name: 'Payment Detail',
+      //   path: '/PaymentDetail',
+      //   element: <PaymentDetail/>,
+      // },
       {
-        icon: <BiSolidOffer {...icon} />,
-        name: 'Payment Detail',
-        path: '/PaymentDetail',
-        element: <PaymentDetail/>,
-      },
-      {
-        icon: <HiUserCircle {...icon} />,
+        icon: <FaCheckToSlot {...icon} />,
         name: 'Slot Booking',
         path: '/CreateSlots',
         element: <CreateSlots />,
@@ -180,25 +208,25 @@ export const routes = [
         element: <GymEquipments />,
       },
       {
-        icon: <FaDumbbell {...icon} />,
+        icon: < MdFormatListBulletedAdd {...icon} />,
         name: 'Create Diet Plans',
         path: '/CreateDietPlans',
         element: <CreateDietPlans />,
       },
       {
-        icon: <FaDumbbell {...icon} />,
+        icon: <MdNoFood {...icon} />,
         name: 'All Diet Plans',
         path: '/AllDietPlans',
         element: <AllDietPlans />,
       },
       {
-        icon: <FaDumbbell {...icon} />,
+        icon: <TbCoinRupeeFilled {...icon} />,
         name: 'Salary Management',
         path: '/SalaryManagement',
         element: <SalaryManagement />,
       },
       {
-        icon: <FaDumbbell {...icon} />,
+        icon: < IoQrCode {...icon} />,
         name: 'Set QR Code',
         path: '/SetQRCode',
         element: <SetQRCode />,

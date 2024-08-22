@@ -89,6 +89,12 @@ const CreatePlans = () => {
   const [controller] = useMaterialTailwindController();
   const { sidenavType } = controller;
 
+  const inputClassName = `w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+    sidenavType === 'dark'
+      ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+      : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+  }`;
+
   return (
     <div className="w-full h-[1100px] overflow-y-scroll p-5 ">
       <div className={`flex w-full pt-3 pb-4 border-x border-y rounded-xl ${sidenavType === 'dark' ? "bg-gray-900 border-gray-800" : "bg-white border-gray-200 text-black"}`}>
@@ -112,17 +118,21 @@ const CreatePlans = () => {
         <form onSubmit={handleSubmit}>
           <Card className={sidenavType==='dark'?"shadow-xl mt-2 bg-gray-900":"shadow-xl mt-2 bg-white"}>
             <CardBody className="flex flex-col gap-4">
-              <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} />
-              <input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} />
-              <input type="text" name="price" placeholder="Price" value={formData.price} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} />
-              {/* <input type="file" name="image" onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} /> */}
-              <input type="number" name="duration" placeholder="Duration" value={formData.duration} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} />
-              <select name="duration_type" value={formData.duration_type} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`}>
-                <option value="day">Day</option>
-                <option value="month">Month</option>
-                <option value="year">Year</option>
-              </select>
-              <textarea name="terms_and_conditions" placeholder="Terms and Conditions" value={formData.terms_and_conditions} onChange={handleChange} className={`p-2 rounded-md border border-gray-200 ${sidenavType === 'dark' ? "bg-gray-900" : "bg-white"}`} />
+              <div className="grid grid-cols-3 gap-4">
+                <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className={inputClassName} />
+                <input type="text" name="description" placeholder="Description" value={formData.description} onChange={handleChange} className={inputClassName} />
+                <input type="text" name="price" placeholder="Price" value={formData.price} onChange={handleChange} className={inputClassName} />
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                <input type="number" name="duration" placeholder="Duration" value={formData.duration} onChange={handleChange} className={inputClassName} />
+                <select name="duration_type" value={formData.duration_type} onChange={handleChange} className={inputClassName}>
+                  <option value="day">Day</option>
+                  <option value="month">Month</option>
+                  <option value="year">Year</option>
+                </select>
+                <input type="file" name="image" onChange={handleChange} className={inputClassName} />
+              </div>
+              <textarea name="terms_and_conditions" placeholder="Terms and Conditions" value={formData.terms_and_conditions} onChange={handleChange} className={`${inputClassName} col-span-3`} />
               <div className="flex flex-col gap-2">
                 {formData.features.map((feature, index) => (
                   <div key={index} className="flex gap-2">
@@ -132,7 +142,7 @@ const CreatePlans = () => {
                       placeholder="Feature"
                       value={feature.name}
                       onChange={handleChange}
-                      className="p-2 rounded-md border border-gray-200"
+                      className={inputClassName}
                     />
                     <button
                       type="button"
@@ -143,13 +153,13 @@ const CreatePlans = () => {
                     </button>
                   </div>
                 ))}
-                {/* <button
+                <button
                   type="button"
                   onClick={addFeatureField}
                   className={`p-2 rounded-md ${sidenavType === 'dark' ? "bg-red-700 text-white" : "bg-black text-white"}`}
                 >
                   Add Feature
-                </button> */}
+                </button>
               </div>
             </CardBody>
             <div className="flex justify-end p-4">
