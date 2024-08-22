@@ -47,7 +47,7 @@ const Enquiry_Create = '/api/enquiries-create/'
 
 const ExpiredMemberships = '/api/expired_memberships/'
 const ExpiringMemberships = '/api/expiring_memberships/'
-
+const IrregularMembers = '/api/irregular-members/'
 
 export const API_URLS = {
     LOGIN_API_PATH: `${LOGIN_API_PATH}`,
@@ -96,5 +96,10 @@ export const API_URLS = {
 
     ExpiredMemberships:`${ExpiredMemberships}`,
     ExpiringMemberships:`${ExpiringMemberships}`,
+    IrregularMembers : `${IrregularMembers}`,
+
+
+
+    
 }
 
