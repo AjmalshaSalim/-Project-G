@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import UserIconDark from "../../assets/gym -icons/User_Icon1.svg"
 import UserIcon from "../../assets/gym -icons/User_Icon.svg"
 import { IoArrowBackSharp } from "react-icons/io5";
+import Profile from "../../assets/images/user.png"
 
 import {
   Navbar,
@@ -508,9 +509,10 @@ export function DashboardNavbar() {
             className="hidden items-center gap-1 px-4 xl:flex normal-case"
             onClick={handleProfileToggle}
           >
-            <UserCircleIcon className={`h-5 w-5 ${sidenavType === 'dark' ? "text-white" : "text-blue-gray-500"
-              }`} />
-            My Profile
+            {/* <UserCircleIcon className={`h-5 w-5 ${sidenavType === 'dark' ? "text-white" : "text-blue-gray-500"
+              }`} /> */}
+              <img src={Profile} alt="" className=" w-7 h-7"/>
+          &nbsp;  My Profile
           </Button>
           <IconButton
             variant="text"
