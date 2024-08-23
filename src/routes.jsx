@@ -1,8 +1,5 @@
 import {
-  HomeIcon,
   UserPlusIcon,
-  ServerStackIcon,
-  RectangleStackIcon,
 } from '@heroicons/react/24/solid';
 import { IoBarChartSharp } from "react-icons/io5";
 import { MdAssignment } from "react-icons/md";
@@ -23,14 +20,9 @@ import { MdNoFood } from "react-icons/md";
 import { TbCoinRupeeFilled } from "react-icons/tb";
 import { IoQrCode } from "react-icons/io5";
 
-
-
 import { FaDumbbell } from "react-icons/fa";
-import { HiUserCircle } from "react-icons/hi";
 import { FaUsers } from "react-icons/fa";
-import { BiSolidOffer } from "react-icons/bi";
 import { BsPatchPlusFill } from "react-icons/bs";
-import { FaClipboardList } from "react-icons/fa";
 import { FaUserTie } from "react-icons/fa";
 import {Home} from './pages/Owner/dashboard/Home';
 // import {Profile} from './pages/User/UserProfile';
