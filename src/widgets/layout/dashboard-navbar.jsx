@@ -50,9 +50,24 @@ export function DashboardNavbar() {
   const { sidenavType } =
     controller;
   const [ProfileToggleActive, setProfileToggleActive] = useState(false);
-  const handleProfileToggle = (() => {
-    setProfileToggleActive(!ProfileToggleActive)
-  })
+  const handleProfileToggle = () => {
+    setProfileToggleActive(!ProfileToggleActive);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const profileCard = document.getElementById('profile-card');
+      if (profileCard && !profileCard.contains(event.target)) {
+        setProfileToggleActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   const [formData, setFormData] = useState({
     id: null,
     first_name: "",
@@ -161,7 +176,7 @@ export function DashboardNavbar() {
           </IconButton>
 
           {ProfileToggleActive ?
-            <div className=" w-[1150px] h-[280px] absolute right-6 top-20 z-50">
+            <div className=" w-[1150px] h-[280px] absolute right-6 top-20 z-50" id="profile-card">
               <Card className={`mt-10 mb-6 w-full h-[700px]  ${sidenavType === 'dark' ? "bg-gray-900 border-x border-y border-gray-800" : "bg-white border border-blue-gray-100"}`}
                 data-aos="fade-up"
                 data-aos-duration="700">
@@ -231,217 +246,128 @@ export function DashboardNavbar() {
                     </div>
                   </div>
                   {/* Profile Information */}
-                  <div className=" grid-cols-1 mb-12 grid px-4 lg:grid-cols-2 xl:grid-cols-3 w-full" ref={menuRef}>
+                  <div className=" grid-cols-1 mb-12 grid px-4 w-full" ref={menuRef}>
                     {/* Editable Profile Information */}
                     {isEditing ? (
                       // Render editable profile info fields when in edit mode
 
                       <form
-                        // onSubmit={handleSubmit}
-                        className="lg:mt-8 mb-2 pr-10 w-80 max-w-screen-lg lg:w-1/2"
+                        className="lg:mt-8 mb-2 max-w-screen-lg lg:w-full"
                       >
-                        <div className=" w-[700px] h-10 -mt-6 mb-6">
-                          <div className=" w-10 h-10 rounded-full bg-gray-700" onClick={() => setIsEditing(!isEditing)}>
-                            <IoArrowBackSharp className=" w-10 h-10 p-2 text-white" />
+                        <div className="w-[700px] h-10 -mt-6 mb-6">
+                          <div className="w-10 h-10 rounded-full bg-gray-700" onClick={() => setIsEditing(!isEditing)}>
+                            <IoArrowBackSharp className="w-10 h-10 p-2 text-white" />
                           </div>
                         </div>
                         <div className="flex flex-col md:flex-row md:gap-6 lg:mb-2">
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium "
-                            >
-                              First name
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="string"
-                              // onChange={handleChange}
-                              value={formData.firstname}
-                              id="firstname"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Last name
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="string"
-                              // onChange={handleChange}
-                              value={formData.lastname}
-                              id="lastname"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
+                          <input
+                            type="text"
+                            value={formData.firstname}
+                            id="firstname"
+                            placeholder="First name"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
+                          <input
+                            type="text"
+                            value={formData.lastname}
+                            id="lastname"
+                            placeholder="Last name"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
                         </div>
                         <div className="flex flex-col md:flex-row md:gap-6 lg:mb-2">
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Mobile number
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="number"
-                              // onChange={handleChange}
-                              value={formData.contact_number}
-                              id="mobilenumber"
-
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Email
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="email"
-                              // onChange={handleChange}
-                              value={formData.email}
-                              id="email"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
+                          <input
+                            type="number"
+                            value={formData.contact_number}
+                            id="mobilenumber"
+                            placeholder="Mobile number"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
+                          <input
+                            type="email"
+                            value={formData.email}
+                            id="email"
+                            placeholder="Email"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
                         </div>
                         <div className="flex flex-col md:flex-row md:gap-6 lg:mb-2">
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Gender
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="string"
-                              // onChange={handleChange}
-                              value={formData.gender}
-                              id="gender"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Age
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="number"
-                              // onChange={handleChange}
-                              value={formData.age}
-                              id="age"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
+                          <input
+                            type="text"
+                            value={formData.gender}
+                            id="gender"
+                            placeholder="Gender"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
+                          <input
+                            type="number"
+                            value={formData.age}
+                            id="age"
+                            placeholder="Age"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
                         </div>
                         <div className="flex flex-col md:flex-row md:gap-6 lg:mb-2">
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Height
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="number"
-                              // onChange={handleChange}
-                              value={formData.height}
-                              id="height"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
-                          <div className="mb-1 flex flex-col flex-grow">
-                            <Typography
-                              variant="small"
-                              color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                              className=" font-medium"
-                            >
-                              Weight
-                            </Typography>
-                            <Input
-                              size="lg"
-                              type="number"
-                              // onChange={handleChange}
-                              value={formData.weight}
-                              id="weight"
-                              placeholder=""
-                              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                              labelProps={{
-                                className: 'before:content-none after:content-none',
-                              }}
-                            />
-                          </div>
+                          <input
+                            type="number"
+                            value={formData.height}
+                            id="height"
+                            placeholder="Height"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
+                          <input
+                            type="number"
+                            value={formData.weight}
+                            id="weight"
+                            placeholder="Weight"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
+                          />
                         </div>
                         <div className="mb-2 flex flex-col gap-6">
-                          <Typography
-                            variant="small"
-                            color={sidenavType === 'dark' ? "white" : "blue-gray"}
-                            className="-mb-6 font-medium"
-                          >
-                            Address
-                          </Typography>
-                          <Input
-                            size="lg"
-                            type="string"
-                            // onChange={handleChange}
+                          <input
+                            type="text"
                             value={formData.address}
                             id="address"
-                            placeholder=""
-                            className=" !border-t-blue-gray-200 focus:!border-t-gray-900 lg:w-[425px]"
-                            labelProps={{
-                              className: 'before:content-none after:content-none',
-                            }}
+                            placeholder="Address"
+                            className={`w-full py-2.5 text-sm px-4 rounded-md bg-transparent border-2 focus:outline-none focus:ring-2 focus:ring-opacity-50 ${
+                              sidenavType === 'dark'
+                                ? "border-gray-600 text-white focus:border-blue-500 focus:ring-blue-500"
+                                : "border-blue-gray-200 text-gray-700 focus:border-blue-500 focus:ring-blue-500"
+                            }`}
                           />
-                          <Button onClick={handleSaveChanges} className={` w-[100%] lg:w-[150px] ${sidenavType === 'dark' ? "bg-red-700" : "bg-black"}`}>Save Changes</Button>
+                          <Button onClick={handleSaveChanges} className={`w-[100%] lg:w-[150px] ${sidenavType === 'dark' ? "bg-red-700" : "bg-black"}`}>Save Changes</Button>
                         </div>
                         <div></div>
                       </form>
